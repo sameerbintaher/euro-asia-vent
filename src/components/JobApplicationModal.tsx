@@ -53,7 +53,7 @@ export default function JobApplicationModal({
           data.message || "Failed to submit application. Please try again."
         );
       }
-    } catch (error) {
+    } catch {
       alert("An error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);

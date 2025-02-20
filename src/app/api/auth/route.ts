@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { cookies } from "next/headers";
 
 // In a real application, you would store these securely in environment variables
 // and use proper password hashing
@@ -18,10 +17,6 @@ export async function POST(request: Request) {
       password === ADMIN_CREDENTIALS.password
     ) {
       // Set a cookie to indicate the user is logged in
-      // In a real application, you would:
-      // 1. Generate a proper JWT token
-      // 2. Set secure HTTP-only cookies
-      // 3. Implement proper session management
       const response = NextResponse.json({
         success: true,
         message: "Login successful",
@@ -45,7 +40,7 @@ export async function POST(request: Request) {
       },
       { status: 401 }
     );
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       {
         success: false,

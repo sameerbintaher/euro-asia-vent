@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import AdminLoginModal from "@/components/AdminLoginModal";
 import JobApplicationModal from "@/components/JobApplicationModal";
+import Link from "next/link";
 
 interface Job {
   _id: string;
@@ -122,7 +123,7 @@ export default function ClientHome({ initialJobs }: { initialJobs: Job[] }) {
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
-            <a href="/" className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center space-x-3">
               <div className="relative w-[250px] h-[350px]">
                 <Image
                   src="/images/logo.png"
@@ -132,10 +133,7 @@ export default function ClientHome({ initialJobs }: { initialJobs: Job[] }) {
                   priority
                 />
               </div>
-              {/* <span className="text-2xl font-bold gradient-text">
-                Euro Asia
-              </span> */}
-            </a>
+            </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
@@ -294,7 +292,7 @@ export default function ClientHome({ initialJobs }: { initialJobs: Job[] }) {
               {
                 title: "Our Commitment",
                 description:
-                  "We're committed to transparency, integrity, and excellence in every service we provide, ensuring the highest standards of professional conduct.",
+                  "We&apos;re committed to transparency, integrity, and excellence in every service we provide, ensuring the highest standards of professional conduct.",
                 icon: "🤝",
               },
             ].map((item, index) => (

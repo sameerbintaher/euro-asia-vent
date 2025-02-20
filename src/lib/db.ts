@@ -4,11 +4,15 @@ const MONGODB_URI =
   process.env.MONGODB_URI ||
   "mongodb+srv://sameerbintaher:2eMmCjmfSS5k1PfA@cluster0.8ktv6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
-let cached = (global as any).mongoose;
-
-if (!cached) {
-  cached = (global as any).mongoose = { conn: null, promise: null };
+interface MongooseConnection {
+  conn: typeof mongoose | null;
+  promise: Promise<typeof mongoose> | null;
 }
+
+let cached: MongooseConnection = {
+  conn: null,
+  promise: null,
+};
 
 export async function connectToDatabase() {
   if (cached.conn) {

@@ -132,7 +132,7 @@ export async function DELETE(request: Request) {
     await Job.findByIdAndDelete(id);
 
     return NextResponse.json({ message: "Job deleted successfully" });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: "Failed to delete job" },
       { status: 500 }

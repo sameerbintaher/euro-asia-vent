@@ -28,8 +28,8 @@ export default function AdminLogin() {
       } else {
         setError("Invalid credentials");
       }
-    } catch (err) {
-      setError("An error occurred. Please try again.");
+    } catch {
+      alert("Login failed. Please try again.");
     } finally {
       setIsLoading(false);
     }
