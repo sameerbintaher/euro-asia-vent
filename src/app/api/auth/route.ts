@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
 
 // In a real application, you would store these securely in environment variables
 // and use proper password hashing
