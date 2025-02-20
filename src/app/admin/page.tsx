@@ -205,11 +205,11 @@ export default function AdminDashboard() {
       {/* Header */}
       <header className="bg-white shadow">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <h1 className="text-3xl font-bold gradient-text">
               Admin Dashboard
             </h1>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center gap-4">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -218,12 +218,15 @@ export default function AdminDashboard() {
                   setEditingJob(null);
                   resetForm();
                 }}
-                className="button-primary flex items-center gap-2"
+                className="button-primary flex items-center gap-2 w-full sm:w-auto"
               >
                 <PlusIcon className="h-5 w-5" />
                 Add New Job
               </motion.button>
-              <button onClick={handleLogout} className="button-secondary">
+              <button
+                onClick={handleLogout}
+                className="button-secondary w-full sm:w-auto"
+              >
                 Logout
               </button>
             </div>

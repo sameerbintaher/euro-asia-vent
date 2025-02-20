@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 import { connectToDatabase } from "@/lib/db";
 import Job from "@/models/Job";
 import ClientHome from "@/components/ClientHome";

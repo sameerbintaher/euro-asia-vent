@@ -39,9 +39,30 @@ const staggerContainer = {
 export default function ClientHome({ initialJobs }: { initialJobs: Job[] }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [jobs] = useState<Job[]>(initialJobs);
+  const [jobs, setJobs] = useState<Job[]>(initialJobs);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [isApplicationModalOpen, setIsApplicationModalOpen] = useState(false);
+
+  // Add periodic job fetching
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const response = await fetch("/api/jobs");
+        const data = await response.json();
+        if (Array.isArray(data)) {
+          setJobs(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch jobs:", error);
+      }
+    };
+
+    // Fetch immediately and then every 30 seconds
+    fetchJobs();
+    const interval = setInterval(fetchJobs, 30000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -239,7 +260,7 @@ export default function ClientHome({ initialJobs }: { initialJobs: Job[] }) {
             </motion.div>
             <motion.div
               variants={fadeInUp}
-              className="relative h-[400px] hidden lg:block"
+              className="relative h-[200px] sm:h-[300px] lg:h-[400px] mt-8 lg:mt-0"
             >
               <Image
                 src="/images/hero.jpg"
@@ -647,8 +668,8 @@ export default function ClientHome({ initialJobs }: { initialJobs: Job[] }) {
                     </div>
                     <div>
                       <h4 className="font-semibold mb-1">Phone</h4>
-                      <p className="text-gray-600">+381 123 456 789</p>
-                      <p className="text-gray-600">+381 987 654 321</p>
+                      <p className="text-gray-600">+381621963351 (Serbia)</p>
+                      <p className="text-gray-600">01781885582 (Bangladesh)</p>
                     </div>
                   </div>
 
@@ -670,9 +691,8 @@ export default function ClientHome({ initialJobs }: { initialJobs: Job[] }) {
                     </div>
                     <div>
                       <h4 className="font-semibold mb-1">Email</h4>
-                      <p className="text-gray-600">info@euroasiaglobal.com</p>
                       <p className="text-gray-600">
-                        careers@euroasiaglobal.com
+                        euroasiaglobalventures@gmail.com
                       </p>
                     </div>
                   </div>
@@ -700,9 +720,41 @@ export default function ClientHome({ initialJobs }: { initialJobs: Job[] }) {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="font-semibold mb-1">Location</h4>
-                      <p className="text-gray-600">Belgrade, Serbia</p>
-                      <p className="text-gray-600">Dhaka, Bangladesh</p>
+                      <h4 className="font-semibold mb-1">Serbia Office</h4>
+                      <p className="text-gray-600">
+                        Street-70, Bogacka, Suburb
+                      </p>
+                      <p className="text-gray-600">City of Belgrade</p>
+                      <p className="text-gray-600">Central Serbia, 11273</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="p-3 bg-blue-50 rounded-lg">
+                      <svg
+                        className="w-6 h-6 text-blue-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1">Bangladesh Office</h4>
+                      <p className="text-gray-600">54 Motijheel, Elite House</p>
+                      <p className="text-gray-600">Level 10, Dhaka</p>
                     </div>
                   </div>
                 </div>
@@ -800,9 +852,15 @@ export default function ClientHome({ initialJobs }: { initialJobs: Job[] }) {
             <div>
               <h4 className="text-lg font-semibold mb-4">Contact</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>Email: info@euroasiaglobal.com</li>
-                <li>Phone: +381 123 456 789</li>
-                <li>Address: Belgrade, Serbia</li>
+                <li>Email: euroasiaglobalventures@gmail.com</li>
+                <li>Serbia: +381621963351</li>
+                <li>Bangladesh: 01781885582</li>
+                <li className="pt-2">Serbia Office:</li>
+                <li>Street-70, Bogacka, Suburb</li>
+                <li>City of Belgrade, Central Serbia</li>
+                <li className="pt-2">Bangladesh Office:</li>
+                <li>54 Motijheel, Elite House</li>
+                <li>Level 10, Dhaka</li>
               </ul>
             </div>
             <div>
