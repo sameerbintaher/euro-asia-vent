@@ -79,7 +79,7 @@ export default function ClientHome({ initialJobs }: { initialJobs: Job[] }) {
       } else {
         alert(data.message);
       }
-    } catch (error) {
+    } catch {
       alert("An error occurred while logging in");
     }
   };
@@ -269,8 +269,8 @@ export default function ClientHome({ initialJobs }: { initialJobs: Job[] }) {
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Euro Asia Global Ventures is a premier international consulting
               agency bridging opportunities between Bangladesh and Serbia. With
-              years of expertise and a commitment to excellence, we've helped
-              thousands of individuals and businesses achieve their
+              years of expertise and a commitment to excellence, we&apos;ve
+              helped thousands of individuals and businesses achieve their
               international goals.
             </p>
           </motion.div>
@@ -286,7 +286,7 @@ export default function ClientHome({ initialJobs }: { initialJobs: Job[] }) {
               {
                 title: "Our Experience",
                 description:
-                  "With over 5 years of experience, we've successfully assisted 1000+ clients in their international journey, maintaining a remarkable 95% success rate.",
+                  "With over 5 years of experience, we&apos;ve successfully assisted 1000+ clients in their international journey, maintaining a remarkable 95% success rate.",
                 icon: "⭐",
               },
               {
