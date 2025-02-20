@@ -619,8 +619,8 @@ export default function ClientHome({ initialJobs }: { initialJobs: Job[] }) {
               Get in <span className="gradient-text">Touch</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Have questions? We're here to help. Contact us through any of the
-              channels below.
+              Have questions? We&apos;re here to help. Contact us through any of
+              the channels below.
             </p>
           </motion.div>
 
